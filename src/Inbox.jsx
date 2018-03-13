@@ -1,5 +1,5 @@
 import React from 'react'
-class App extends React.Component {
+class Inbox extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
@@ -13,9 +13,9 @@ class App extends React.Component {
   render() {
     return (
       <div>
-         Hello world111;
+         Hello,I am inbox;
       </div>
     );
   }
 }
-export default App;
+export default Inbox;
