@@ -2,15 +2,15 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { AppContainer } from "react-hot-loader";
 import { HashRouter, Route, Link, NavLink } from "react-router-dom";
-import About from "./About.jsx";
-import Inbox from "./Inbox.jsx";
-import App from "./App.jsx";
+import About from "./about/About.jsx";
+import Inbox from "./inbox/Inbox.jsx";
+import App from "./app/App.jsx";
 
 const render = App => {
   ReactDOM.render(
     <HashRouter>
       <div>
-        <ul>
+        {/* <ul>
           <li>
             <Link to="/home">App</Link>
           </li>
@@ -28,8 +28,7 @@ const render = App => {
           <li>
             <Link to="/inbox">Inbox</Link>
           </li>
-        </ul>
-
+        </ul> */}
         <Route exact path="/" component={App} />
         <Route path="/about" component={About} />
         <Route path="/inbox" component={Inbox} />

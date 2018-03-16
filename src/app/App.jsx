@@ -1,5 +1,6 @@
 import React from 'react'
-class About extends React.Component {
+import './style.scss'
+class Inbox extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
@@ -12,10 +13,10 @@ class About extends React.Component {
   componentWillUnmount(){};
   render() {
     return (
-      <div>
-         Hello,I am about;
+      <div  className="about-container">
+         Hello,I am app;
       </div>
     );
   }
 }
-export default About;
+export default Inbox;
