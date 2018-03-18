@@ -20,7 +20,18 @@ module.exports = {
       { test: /\.jsx?$/, use: ["babel-loader"], exclude: /node_modules/ },
       {
         test: /\.css$/,
-        use: ["style-loader", "css-loader", "postcss-loader"]
+        // use: {
+        //   loader: "css-loader",
+        //   options: {
+        //     modules: true,
+        //     localIdentName: "[path][name]__[local]--[hash:base64:5]"
+        //   }
+        // }
+        use: ExtractTextPlugin.extract({
+          fallback: "style-loader",
+          //resolve-url-loader may be chained before sass-loader if necessary
+          use: ["style-loader", "css-loader"]
+        })
       },
       {
         test: /\.less$/,
@@ -28,11 +39,27 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        use: ExtractTextPlugin.extract({
-          fallback: "style-loader",
-          //resolve-url-loader may be chained before sass-loader if necessary
-          use: ["css-loader", "sass-loader"]
-        })
+        use: [
+          {
+            loader: "style-loader"
+          },
+          {
+            loader: "css-loader",
+            options: {
+              modules: true,
+              localIdentName: "[local]--[hash:base64:5]"
+            }
+          },
+          {
+            loader: "sass-loader"
+          }
+        ]
+        // use: ["style-loader", "css-loader", "sass-loader"]
+        // use: ExtractTextPlugin.extract({
+        //   fallback: "style-loader",
+        //   //resolve-url-loader may be chained before sass-loader if necessary
+        //   use: ["css-loader", "sass-loader"]
+        // })
       }
     ]
   },
@@ -42,6 +69,8 @@ module.exports = {
       title: "Production",
       template: path.resolve(__dirname, "index.html")
     }),
-    new ExtractTextPlugin("styles.css")
+    new ExtractTextPlugin("[name].styles.[id].[contenthash].css", {
+      allChunks: false
+    })
   ]
 };

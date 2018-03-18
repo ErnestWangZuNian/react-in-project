@@ -1,22 +1,18 @@
-import React from 'react'
-import './style.scss'
+import React from "react";
+import styles from "./style.scss";
 class Inbox extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
   }
-  componentWillMount(){};
-  componentDidMount(){};
-  componentWillReceiveProps(){};
-  componentWillUpdate(){};
-  componentDidUpdate(){};
-  componentWillUnmount(){};
+  componentWillMount() {}
+  componentDidMount() {}
+  componentWillReceiveProps() {}
+  componentWillUpdate() {}
+  componentDidUpdate() {}
+  componentWillUnmount() {}
   render() {
-    return (
-      <div  className="about-container">
-         Hello,I am app;
-      </div>
-    );
+    return <div className={"title"}>Hello,I am app;</div>;
   }
 }
 export default Inbox;

@@ -1,5 +1,5 @@
 import React from "react";
-import "./style.scss";
+import styles from "./style.scss";
 class About extends React.Component {
   constructor(props) {
     super(props);
@@ -12,7 +12,7 @@ class About extends React.Component {
   componentDidUpdate() {}
   componentWillUnmount() {}
   render() {
-    return <div className="about-container">Hello,I am about;</div>;
+    return <div className={"title"}>Hello,I am about;</div>;
   }
 }
 export default About;
