@@ -7,10 +7,16 @@ module.exports = merge(common, {
   devServer: {
     hot: true,
     port: 1024,
-    contentBase: "./dist"
+    contentBase: "./dist",
+    proxy: {
+      "/": {
+        target: "http://book.zhongxiaoyu.cn/",
+        pathRewrite: { "^/": "" }
+      }
+    }
   },
   plugins: [
-    new webpack.HotModuleReplacementPlugin(), 
-    new webpack.NamedModulesPlugin() 
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NamedModulesPlugin()
   ]
 });

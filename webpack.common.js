@@ -2,6 +2,7 @@ const path = require("path");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const webpack = require("webpack");
 
 module.exports = {
   entry: [
@@ -43,22 +44,22 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        use: [
-          {
-            loader: "style-loader"
-          },
-          {
-            loader: "css-loader",
-            options: {
-              modules: true,
-              localIdentName: "[local]--[hash:base64:5]"
-            }
-          },
-          {
-            loader: "sass-loader"
-          }
-        ]
-        // use: ["style-loader", "css-loader", "sass-loader"]
+        // use: [
+        //   {
+        //     loader: "style-loader"
+        //   },
+        //   {
+        //     loader: "css-loader",
+        //     options: {
+        //       modules: true,
+        //       localIdentName: "[local]--[hash:base64:5]"
+        //     }
+        //   },
+        //   {
+        //     loader: "sass-loader"
+        //   }
+        // ]
+        use: ["style-loader", "css-loader", "sass-loader"]
         // use: ExtractTextPlugin.extract({
         //   fallback: "style-loader",
         //   //resolve-url-loader may be chained before sass-loader if necessary
@@ -69,6 +70,9 @@ module.exports = {
   },
   plugins: [
     new CleanWebpackPlugin(["dist"]),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: "common"
+    }),
     new HtmlWebpackPlugin({
       title: "Production",
       template: path.resolve(__dirname, "index.html")
