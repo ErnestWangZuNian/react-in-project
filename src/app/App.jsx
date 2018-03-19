@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./style.scss";
-class About extends React.Component {
+class Inbox extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
@@ -12,7 +12,7 @@ class About extends React.Component {
   componentDidUpdate() {}
   componentWillUnmount() {}
   render() {
-    return <div className={"title"}>Hello,I am about;</div>;
+    return <div className={"title"}>Hello,I am app;</div>;
   }
 }
-export default About;
+export default Inbox;
