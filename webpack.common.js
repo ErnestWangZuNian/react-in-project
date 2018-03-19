@@ -19,6 +19,10 @@ module.exports = {
     rules: [
       { test: /\.jsx?$/, use: ["babel-loader"], exclude: /node_modules/ },
       {
+        test: /\.bundle\.jsx$/,
+        use: "bundle-loader"
+      },
+      {
         test: /\.css$/,
         use: ["style-loader", "css-loader", "postcss-loader"]
       },
@@ -28,11 +32,12 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        use: ExtractTextPlugin.extract({
-          fallback: "style-loader",
-          //resolve-url-loader may be chained before sass-loader if necessary
-          use: ["css-loader", "sass-loader"]
-        })
+        use: ["style-loader", "css-loader", "sass-loader"]
+        // use: ExtractTextPlugin.extract({
+        //   fallback: "style-loader",
+        //   //resolve-url-loader may be chained before sass-loader if necessary
+        //   use: ["css-loader", "sass-loader"]
+        // })
       }
     ]
   },

@@ -1,44 +1,9 @@
-import React from "react";
+import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import { AppContainer } from "react-hot-loader";
-import { HashRouter, Route, Link, NavLink } from "react-router-dom";
-import About from "./about/About.jsx";
-import Inbox from "./inbox/Inbox.jsx";
-import App from "./app/App.jsx";
+import Router from "./router/route/index.jsx";
 
-const render = App => {
-  ReactDOM.render(
-    <HashRouter>
-      <div>
-        {/* <ul>
-          <li>
-            <Link to="/home">App</Link>
-          </li>
-          <li>
-            <NavLink
-              to="/about"
-              activeStyle={{
-                fontWeight: "bold",
-                color: "red"
-              }}
-            >
-              About
-            </NavLink>
-          </li>
-          <li>
-            <Link to="/inbox">Inbox</Link>
-          </li>
-        </ul> */}
-        <Route exact path="/" component={App} />
-        <Route path="/about" component={About} />
-        <Route path="/inbox" component={Inbox} />
-      </div>
-    </HashRouter>,
-    document.getElementById("app")
-  );
-};
-
-render(App);
+ReactDOM.render(Router, document.getElementById("app"));
 
 // if (module.hot) {
 //   module.hot.accept('./App', () => render(App))
