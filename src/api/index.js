@@ -41,5 +41,8 @@ class Api {
       params
     });
   }
+  all(requests) {
+    return axios.all(requests);
+  }
 }
 export default Api;

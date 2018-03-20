@@ -1,16 +1,18 @@
 import React from "react";
 import styles from "./style.scss";
-import Api from "../../api/index.jsx";
+import urlList from "./api.actions";
 class About extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
   }
   componentWillMount() {
-    let api = new Api();
-    api.get("/v1/book/list").then(res => {
-      console.log(res.data);
-    });
+    Api.get(urlList.list).then(res => {});
+    Api.all([Api.get(urlList.list), Api.get(urlList.categoryList)]).then(
+      res => {
+        console.log(res);
+      }
+    );
   }
   componentDidMount() {}
   componentWillReceiveProps() {}

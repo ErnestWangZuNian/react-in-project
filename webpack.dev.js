@@ -5,8 +5,8 @@ const webpack = require("webpack");
 module.exports = merge(common, {
   devtool: "inline-source-map",
   devServer: {
-    hot: true,
-    port: 1024,
+    // hot: true,
+    port: 8080,
     contentBase: "./dist",
     proxy: {
       "/": {
@@ -16,7 +16,7 @@ module.exports = merge(common, {
     }
   },
   plugins: [
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.NamedModulesPlugin()
+    // new webpack.HotModuleReplacementPlugin(),
+    // new webpack.NamedModulesPlugin()
   ]
 });

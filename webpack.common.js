@@ -5,12 +5,7 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const webpack = require("webpack");
 
 module.exports = {
-  entry: [
-    "react-hot-loader/patch", // 激活HMR
-    "webpack-dev-server/client",
-    "webpack/hot/only-dev-server",
-    path.resolve(__dirname, "src/main.js")
-  ],
+  entry: [path.resolve(__dirname, "src/main.js")],
   output: {
     filename: "[name].bundle.js",
     path: path.resolve(__dirname, "dist")
@@ -21,7 +16,12 @@ module.exports = {
       { test: /\.jsx?$/, use: ["babel-loader"], exclude: /node_modules/ },
       {
         test: /\.bundle\.jsx$/,
-        use: "bundle-loader"
+        use: {
+          loader: "bundle-loader",
+          options: {
+            lazy: true
+          }
+        }
       },
       {
         test: /\.css$/,
