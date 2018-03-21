@@ -1,10 +1,9 @@
-import axios from "axios";
-import qs from "qs";
-const baseURL = "";
-axios.defaults.baseURL = baseURL;
+import Api from "wzn-api";
+let api = new Api();
+let apiInstance = api.create();
 
 // 添加请求拦截器
-axios.interceptors.request.use(
+apiInstance.interceptors.request.use(
   config => {
     return config;
   },
@@ -14,7 +13,7 @@ axios.interceptors.request.use(
 );
 
 // 添加响应拦截器
-axios.interceptors.response.use(
+apiInstance.interceptors.response.use(
   response => {
     return response.data;
   },
@@ -23,26 +22,4 @@ axios.interceptors.response.use(
     return Promise.reject(error);
   }
 );
-
-//  导出api
-class Api {
-  constructor() {}
-  post(url, data) {
-    return axios({
-      method: "post",
-      url,
-      data: qs.stringify(data)
-    });
-  }
-  get(url, params) {
-    return axios({
-      method: "get",
-      url,
-      params
-    });
-  }
-  all(requests) {
-    return axios.all(requests);
-  }
-}
-export default Api;
+export default api;

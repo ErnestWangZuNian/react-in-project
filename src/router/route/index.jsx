@@ -1,13 +1,15 @@
 import React, { Component } from "react";
 import { HashRouter, Route, Link, NavLink } from "react-router-dom";
-import Bundle from "../bundle/index.jsx";
-import loadAbout from "bundle-loader?lazy!../../pages/about/index.jsx";
-import loadInbox from "bundle-loader?lazy!../../pages/inbox/index.jsx";
-import loadApp from "bundle-loader?lazy!../../pages/app/index.jsx";
-const About = () => <Bundle load={loadAbout}>{About => <About />}</Bundle>;
-const Inbox = () => <Bundle load={loadInbox}>{Inbox => <Inbox />}</Bundle>;
-const App = () => <Bundle load={loadApp}>{App => <App />}</Bundle>;
-// const App = <App load={loadApp}>{App => <App />}</App>;
+import Bundle from "@/component/bundle";
+const About = () => (
+  <Bundle load={require("bundle-loader?lazy!@/pages/about/index.jsx")} />
+);
+const Inbox = () => (
+  <Bundle load={require("bundle-loader?lazy!@/pages/inbox/index.jsx")} />
+);
+const App = () => (
+  <Bundle load={require("bundle-loader?lazy!@/pages/app/index.jsx")} />
+);
 let router = (
   <HashRouter>
     <div>

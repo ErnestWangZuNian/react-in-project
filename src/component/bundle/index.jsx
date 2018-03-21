@@ -17,7 +17,6 @@ class Bundle extends Component {
       this.load(nextProps);
     }
   }
-
   load(props) {
     this.setState({
       mod: null
@@ -31,8 +30,7 @@ class Bundle extends Component {
   }
 
   render() {
-    console.log(this.props.children);
-    return this.state.mod ? this.props.children(this.state.mod) : null;
+    return this.state.mod ? <this.state.mod /> : null;
   }
 }
 

@@ -7,11 +7,11 @@ class About extends React.Component {
     this.state = {};
   }
   componentWillMount() {
-    Api.get(urlList.list).then(res => {});
-    Api.all([Api.get(urlList.list), Api.get(urlList.categoryList)]).then(
-      res => {
-        console.log(res);
-      }
+    Api.get(urlList.list).then(res => {
+      console.log(res.data);
+    });
+    Api.post(urlList.borrow, { book_id: "1", pre_return_at: "2017-10-1" }).then(
+      res => {}
     );
   }
   componentDidMount() {}
