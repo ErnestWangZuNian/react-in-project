@@ -3,13 +3,10 @@ const CleanWebpackPlugin = require("clean-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const webpack = require("webpack");
-const resolve = dir => {
-  return path.join(process.cwd(), dir);
-};
-
-const src = resolve("src");
+const context = path.resolve(__dirname, "src");
 
 module.exports = {
+  context,
   entry: [path.resolve(__dirname, "src/main.js")],
   output: {
     filename: "[name].bundle.js",
@@ -19,12 +16,37 @@ module.exports = {
     modules: ["node_modules"],
     extensions: [".js", ".jsx", ".scss", ".less", ".css"],
     alias: {
-      "@": src
+      "@": context
     }
   },
   module: {
-    rules: [
-      { test: /\.jsx?$/, use: ["babel-loader"], exclude: /node_modules/ },
+    loaders: [
+      {
+        test: /\.(js|jsx)$/,
+        include: context,
+        use: {
+          loader: "babel-loader",
+          options: {
+            plugins: [
+              [
+                "react-css-modules",
+                {
+                  context: context,
+                  exclude: "node_modules",
+                  filetypes: {
+                    ".scss": {
+                      syntax: "postcss-scss"
+                    }
+                  },
+                  webpackHotModuleReloading: true,
+                  handleMissingStyleName: "ignore",
+                  generateScopedName: "[local]--[hash:base64:5]"
+                }
+              ]
+            ]
+          }
+        }
+      },
       {
         test: /\.bundle\.jsx$/,
         use: {
@@ -36,7 +58,6 @@ module.exports = {
       },
       {
         test: /\.css$/,
-
         use: ExtractTextPlugin.extract({
           fallback: "style-loader",
           use: ["style-loader", "css-loader"]
@@ -44,11 +65,35 @@ module.exports = {
       },
       {
         test: /\.less$/,
-        use: ["style-loader", "css-loader", "postcss-loader", "less-loader"]
+        use: [
+          {
+            loader: "style-loader"
+          },
+          {
+            loader: "css-loader"
+          },
+          {
+            loader: "less-loader"
+          }
+        ]
       },
       {
         test: /\.scss$/,
-        use: ["style-loader", "css-loader", "sass-loader"]
+        use: [
+          {
+            loader: "style-loader"
+          },
+          {
+            loader: "css-loader",
+            options: {
+              module: true,
+              localIdentName: "[local]--[hash:base64:5]"
+            }
+          },
+          {
+            loader: "sass-loader"
+          }
+        ]
       }
     ]
   },

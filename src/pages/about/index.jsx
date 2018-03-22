@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./style.scss";
+import "./style.scss";
 import urlList from "./api.actions";
 class About extends React.Component {
   constructor(props) {
@@ -7,8 +7,8 @@ class About extends React.Component {
     this.state = {};
   }
   componentWillMount() {
-    Api.get(urlList.list).then(res => {
-      console.log(res.data);
+    Api.all([urlList.list, urlList.lis]).then(datas => {
+      console.log(datas);
     });
     Api.post(urlList.borrow, { book_id: "1", pre_return_at: "2017-10-1" }).then(
       res => {}
@@ -20,7 +20,12 @@ class About extends React.Component {
   componentDidUpdate() {}
   componentWillUnmount() {}
   render() {
-    return <div className="about-container">Hello,I am about;</div>;
+    return (
+      <div>
+        <div styleName="about-container test">Hello,I am about;</div>;
+        <div styleName="red2">111</div>
+      </div>
+    );
   }
 }
 export default About;

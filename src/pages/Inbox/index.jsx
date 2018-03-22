@@ -12,7 +12,7 @@ class Inbox extends React.Component {
   componentDidUpdate() {}
   componentWillUnmount() {}
   render() {
-    return <div className="about-container">Hello,I am inbox;</div>;
+    return <div styleName="about-container">Hello,I am inbox;</div>;
   }
 }
 export default Inbox;
