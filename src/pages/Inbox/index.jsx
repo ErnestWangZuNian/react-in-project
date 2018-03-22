@@ -1,4 +1,3 @@
-import React from "react";
 import "./style.scss";
 class Inbox extends React.Component {
   constructor(props) {

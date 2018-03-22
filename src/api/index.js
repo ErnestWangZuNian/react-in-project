@@ -1,9 +1,8 @@
 import Api from "wzn-api";
 let api = new Api();
-let apiInstance = api.create();
 
 // 添加请求拦截器
-apiInstance.interceptors.request.use(
+api.interceptors.request.use(
   config => {
     return config;
   },
@@ -13,7 +12,7 @@ apiInstance.interceptors.request.use(
 );
 
 // 添加响应拦截器
-apiInstance.interceptors.response.use(
+api.interceptors.response.use(
   response => {
     return response.data;
   },
