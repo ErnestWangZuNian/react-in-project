@@ -1,5 +1,6 @@
 import "./style.scss";
 import urlList from "./api.actions";
+import { Button } from "antd-mobile";
 class About extends React.Component {
   constructor(props) {
     super(props);
@@ -24,7 +25,8 @@ class About extends React.Component {
     const { data } = this.state;
     return (
       <div>
-        {data ? <div styleName="about-container">{data.status}</div> : null}
+        <div styleName="test">111</div>
+        <Button type="primary">测试</Button>
       </div>
     );
   }

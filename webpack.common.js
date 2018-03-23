@@ -60,7 +60,7 @@ module.exports = {
         test: /\.css$/,
         use: ExtractTextPlugin.extract({
           fallback: "style-loader",
-          use: ["style-loader", "css-loader"]
+          use: ["css-loader"]
         })
       },
       {
@@ -78,22 +78,25 @@ module.exports = {
         ]
       },
       {
-        test: /\.scss$/,
-        use: [
-          {
-            loader: "style-loader"
-          },
-          {
-            loader: "css-loader",
-            options: {
-              module: true,
-              localIdentName: "[local]--[hash:base64:5]"
+        test: /\.(scss|sass)$/,
+        use: ExtractTextPlugin.extract({
+          fallback: "style-loader",
+          use: [
+            {
+              loader: "style-loader"
+            },
+            {
+              loader: "css-loader",
+              options: {
+                module: true,
+                localIdentName: "[local]--[hash:base64:5]"
+              }
+            },
+            {
+              loader: "sass-loader"
             }
-          },
-          {
-            loader: "sass-loader"
-          }
-        ]
+          ]
+        })
       },
       {
         test: /\.(png|jpg|gif)$/,
