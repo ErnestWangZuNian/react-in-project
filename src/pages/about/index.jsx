@@ -1,6 +1,6 @@
 import "./style.scss";
 import urlList from "./api.actions";
-import { Button } from "antd-mobile";
+import { PullToRefresh } from "antd-mobile";
 class About extends React.Component {
   constructor(props) {
     super(props);

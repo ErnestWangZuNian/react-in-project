@@ -7,5 +7,6 @@ import flexible from "./utils/flexible";
 flexible(window);
 global.Api = Api;
 global.React = React;
+global.ReactDOM = ReactDOM;
 
 ReactDOM.render(Router, document.getElementById("app"));

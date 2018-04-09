@@ -13,25 +13,6 @@ const App = () => (
 let router = (
   <HashRouter>
     <div>
-      <ul>
-        <li>
-          <Link to="/">App</Link>
-        </li>
-        <li>
-          <NavLink
-            to="/about"
-            activeStyle={{
-              fontWeight: "bold",
-              color: "red"
-            }}
-          >
-            About
-          </NavLink>
-        </li>
-        <li>
-          <Link to="/inbox">Inbox</Link>
-        </li>
-      </ul>
       <Route exact path="/" component={App} />
       <Route exact path="/about" component={About} />
       <Route exact path="/inbox" component={Inbox} />
